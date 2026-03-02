@@ -1,0 +1,2 @@
+ALTER TABLE exercise_sets
+ALTER COLUMN reps TYPE VARCHAR(20);
