@@ -55,6 +55,7 @@ public class WorkoutService {
                 .dayId(dayId)
                 .name(req.name())
                 .notes(req.notes())
+                .videoUrl(req.videoUrl())
                 .build();
 
         exerciseRepo.save(ex);
@@ -113,6 +114,7 @@ public class WorkoutService {
                         ex.getId(),
                         ex.getName(),
                         ex.getNotes(),
+                        ex.getVideoUrl(),
                         setResponses
                 );
 
@@ -168,6 +170,7 @@ public class WorkoutService {
         // update exercise
         ex.setName(req.name());
         ex.setNotes(req.notes());
+        ex.setVideoUrl(req.videoUrl());
         exerciseRepo.save(ex);
 
         List<ExerciseSet> existingSets = setRepo.findByExerciseId(exerciseId);

@@ -18,4 +18,6 @@ public class Exercise {
     @Column(nullable = false)
     private String name;
     private String notes;
+    @Column(name = "video_url")
+    private String videoUrl;
 }
