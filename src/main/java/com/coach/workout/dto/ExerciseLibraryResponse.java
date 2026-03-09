@@ -8,6 +8,7 @@ public record ExerciseLibraryResponse(
         Integer srNo,
         String muscleGroup,
         String exerciseName,
+        String musclesTrained,
         String videoUrl,
         Instant createdAt,
         Instant updatedAt

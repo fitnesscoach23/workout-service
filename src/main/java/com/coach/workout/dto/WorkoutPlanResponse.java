@@ -22,6 +22,7 @@ public record WorkoutPlanResponse(
             UUID id,
             String name,
             String notes,
+            String musclesTrained,
             String videoUrl,
             List<Set> sets
     ) {}

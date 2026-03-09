@@ -28,6 +28,7 @@ public class ExerciseLibraryService {
                 .srNo(req.srNo())
                 .muscleGroup(req.muscleGroup())
                 .exerciseName(req.exerciseName())
+                .musclesTrained(req.musclesTrained())
                 .videoUrl(req.videoUrl())
                 .createdAt(Instant.now())
                 .build();
@@ -51,6 +52,7 @@ public class ExerciseLibraryService {
         item.setSrNo(req.srNo());
         item.setMuscleGroup(req.muscleGroup());
         item.setExerciseName(req.exerciseName());
+        item.setMusclesTrained(req.musclesTrained());
         item.setVideoUrl(req.videoUrl());
         item.setUpdatedAt(Instant.now());
         libraryRepo.save(item);
@@ -94,6 +96,7 @@ public class ExerciseLibraryService {
                     item.getSrNo(),
                     item.getMuscleGroup(),
                     item.getExerciseName(),
+                    item.getMusclesTrained(),
                     item.getVideoUrl(),
                     assignment.getAssignedAt()
             );
@@ -118,6 +121,7 @@ public class ExerciseLibraryService {
                 item.getSrNo(),
                 item.getMuscleGroup(),
                 item.getExerciseName(),
+                item.getMusclesTrained(),
                 item.getVideoUrl(),
                 item.getCreatedAt(),
                 item.getUpdatedAt()

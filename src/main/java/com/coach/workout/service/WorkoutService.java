@@ -55,6 +55,7 @@ public class WorkoutService {
                 .dayId(dayId)
                 .name(req.name())
                 .notes(req.notes())
+                .musclesTrained(req.musclesTrained())
                 .videoUrl(req.videoUrl())
                 .build();
 
@@ -114,6 +115,7 @@ public class WorkoutService {
                         ex.getId(),
                         ex.getName(),
                         ex.getNotes(),
+                        ex.getMusclesTrained(),
                         ex.getVideoUrl(),
                         setResponses
                 );
@@ -170,6 +172,7 @@ public class WorkoutService {
         // update exercise
         ex.setName(req.name());
         ex.setNotes(req.notes());
+        ex.setMusclesTrained(req.musclesTrained());
         ex.setVideoUrl(req.videoUrl());
         exerciseRepo.save(ex);
 

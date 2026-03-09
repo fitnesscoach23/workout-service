@@ -36,6 +36,9 @@ public class ExerciseLibraryItem {
     @Column(name = "exercise_name", nullable = false)
     private String exerciseName;
 
+    @Column(name = "muscles_trained")
+    private String musclesTrained;
+
     @Column(name = "video_url")
     private String videoUrl;
 

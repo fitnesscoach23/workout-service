@@ -7,6 +7,7 @@ import java.util.UUID;
 public record SaveExerciseRequest(
         String name,
         String notes,
+        String musclesTrained,
         String videoUrl,
         List<ExerciseSetDto> sets
 ) {

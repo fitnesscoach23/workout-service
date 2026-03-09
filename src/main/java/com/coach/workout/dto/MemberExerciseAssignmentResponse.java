@@ -10,6 +10,7 @@ public record MemberExerciseAssignmentResponse(
         Integer srNo,
         String muscleGroup,
         String exerciseName,
+        String musclesTrained,
         String videoUrl,
         Instant assignedAt
 ) {}

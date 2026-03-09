@@ -7,5 +7,6 @@ public record ExerciseLibraryRequest(
         @NotNull Integer srNo,
         @NotBlank String muscleGroup,
         @NotBlank String exerciseName,
+        String musclesTrained,
         String videoUrl
 ) {}
