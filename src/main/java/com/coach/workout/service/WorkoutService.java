@@ -6,11 +6,14 @@ import com.coach.workout.repository.*;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +58,7 @@ public class WorkoutService {
                 .dayId(dayId)
                 .name(req.name())
                 .notes(req.notes())
+                .muscleGroup(req.muscleGroup())
                 .musclesTrained(req.musclesTrained())
                 .videoUrl(req.videoUrl())
                 .build();
@@ -115,6 +119,7 @@ public class WorkoutService {
                         ex.getId(),
                         ex.getName(),
                         ex.getNotes(),
+                        ex.getMuscleGroup(),
                         ex.getMusclesTrained(),
                         ex.getVideoUrl(),
                         setResponses
@@ -140,10 +145,18 @@ public class WorkoutService {
         );
     }
 
+    @Transactional
+    public void updatePlan(String coachEmail, UUID planId, UpdateWorkoutPlanRequest req) {
+        WorkoutPlan plan = assertOwnedPlan(coachEmail, planId);
+        plan.setTitle(req.title());
+        plan.setNotes(req.notes());
+        planRepo.save(plan);
+    }
+
     private WorkoutPlan assertOwnedPlan(String coachEmail, UUID planId) {
         return planRepo.findById(planId)
                 .filter(plan -> plan.getCoachEmail().equals(coachEmail))
-                .orElseThrow(() -> new RuntimeException("Plan not found"));
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Plan not found"));
     }
 
     public List<WorkoutPlanResponse> listPlans(String coachEmail) {
@@ -172,6 +185,7 @@ public class WorkoutService {
         // update exercise
         ex.setName(req.name());
         ex.setNotes(req.notes());
+        ex.setMuscleGroup(req.muscleGroup());
         ex.setMusclesTrained(req.musclesTrained());
         ex.setVideoUrl(req.videoUrl());
         exerciseRepo.save(ex);

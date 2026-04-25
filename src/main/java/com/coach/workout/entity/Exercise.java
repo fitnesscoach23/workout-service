@@ -18,6 +18,8 @@ public class Exercise {
     @Column(nullable = false)
     private String name;
     private String notes;
+    @Column(name = "muscle_group")
+    private String muscleGroup;
     @Column(name = "muscles_trained")
     private String musclesTrained;
     @Column(name = "video_url")

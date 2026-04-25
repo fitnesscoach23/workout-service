@@ -48,6 +48,15 @@ public class WorkoutController {
         return ResponseEntity.ok(service.getPlan(current.coachEmail(), planId));
     }
 
+    @PutMapping("/{planId}")
+    public ResponseEntity<?> updatePlan(
+            @PathVariable UUID planId,
+            @RequestBody UpdateWorkoutPlanRequest req
+    ) {
+        service.updatePlan(current.coachEmail(), planId, req);
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/{planId}/assign/{memberId}")
     public ResponseEntity<?> assignPlan(@PathVariable UUID planId,
                                         @PathVariable UUID memberId) {
